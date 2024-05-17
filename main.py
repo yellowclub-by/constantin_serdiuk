@@ -10,7 +10,10 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 from handlers.user_private import user_router
+from handlers.user_group import group_router
 dp.include_router(user_router)
+dp.include_router(group_router)
+
 
 # функция для старта бота
 async def main():

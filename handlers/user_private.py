@@ -36,7 +36,7 @@ async def maps(message: types.Message):
     await message.answer("В игре много карт, которые меняются каждые 24 часа.")
 
 
-@user_router.message(F.text)                                                # фильтр текста
+# @user_router.message(F.text)                                                # фильтр текста
 # @user_router.message(F.photo)                                             # фильтр текста
 # @user_router.message(F.text.lower() == "доставка")                        # фильтр конкретного текста
 # @user_router.message(F.text.lower().contains("доставк"))                  # фильтр по содержанию
