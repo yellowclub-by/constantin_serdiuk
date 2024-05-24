@@ -1,5 +1,6 @@
 from aiogram import Router, types, F
 from aiogram.filters import CommandStart, Command
+from Keyboards import reply
 
 
 # создаем роутер
@@ -8,13 +9,13 @@ user_router = Router()
 
 @user_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    await message.answer("Привет! Это бот про персонажей Brawl Stars!")
+    await message.answer("Привет! Это бот про персонажей Brawl Stars!", reply_markup=reply.start_kb)
 
 
 @user_router.message(Command("heroes"))
 @user_router.message(F.text.lower() == "герои")
 async def heroes(message: types.Message):
-    await message.answer("Здесь вы найдете список всех персонажей Brawl Stars!")
+    await message.answer("Здесь вы найдете список всех персонажей Brawl Stars!", reply_markup=reply.heroes_kb)
 
 
 @user_router.message(Command("game"))
@@ -27,13 +28,18 @@ async def game(message: types.Message):
 @user_router.message(Command("game_modes"))
 @user_router.message(F.text.lower() == "режимы")
 async def game_modes(message: types.Message):
-    await message.answer("В игре есть несколько режимов сражений.")
+    await message.answer("В игре есть несколько режимов сражений.", reply_markup=reply.game_modes_kb)
 
 
 @user_router.message(Command("maps"))
 @user_router.message(F.text.lower() == "карты")
 async def maps(message: types.Message):
-    await message.answer("В игре много карт, которые меняются каждые 24 часа.")
+    await message.answer("В игре много карт, которые меняются каждые 24 часа.", reply_markup=reply.maps_kb)
+
+
+@user_router.message(F.text.lower() == "назад")
+async def back(message: types.Message):
+    await message.answer("Главное меню", reply_markup=reply.start_kb)
 
 
 # @user_router.message(F.text)                                                # фильтр текста
