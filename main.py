@@ -10,8 +10,12 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 from handlers.user_private import user_router
+from handlers.heroes import heroes_router
+from handlers.maps import maps_router
 from handlers.user_group import group_router
 dp.include_router(user_router)
+dp.include_router(heroes_router)
+dp.include_router(maps_router)
 dp.include_router(group_router)
 
 
